@@ -1,0 +1,19 @@
+smppsim:
+  image: jdub/smppsim
+  ports:
+    - "2775"
+bearerbox:
+  image: jdub/bearerbox
+  ports:
+    - "14000:14000"
+    - "13000:13000"
+  links:
+    - smppsim:smppsim
+smsbox:
+  image: jdub/smsbox
+  ports:
+    - "13013:13013"
+  links:
+    - bearerbox:bearerbox
+
+
